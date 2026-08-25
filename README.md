@@ -85,7 +85,7 @@ Python desktop application for discovering active devices on local networks.
   &nbsp;&nbsp;
   <img src="./assets/icons/hashcat.svg" height="48" width="48" title="Hashcat" alt="Hashcat" />
   &nbsp;&nbsp;
-  <a href="https://www.flaticon.com/free-icons/top-hat" title="top hat icons">Top hat icons created by Smashicons - Flaticon</a>
+  <img src="./assets/icons/top-hat.png" height="48" width="48" title="John The Ripper" alt="John The Ripper" />
   &nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/vanhauser-thc/thc-hydra/master/xhydra.png" height="48" width="48" title="Hydra" alt="Hydra" />
   &nbsp;&nbsp;
