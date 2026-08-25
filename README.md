@@ -42,9 +42,9 @@ Python desktop application for discovering active devices on local networks.
 
 ## 📡 hack the box
 
-Hands-on labs in enumeration, exploitation, privilege escalation, Linux, and network security.
-
-**Profile:** [Hack The Box →](https://app.hackthebox.com/users/3331404)
+<a href="https://app.hackthebox.com/public/users/3331404">
+  <img src="./assets/htb-card.svg" width="100%" alt="Twardowski Hack The Box profile">
+</a>
 
 ---
 
