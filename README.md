@@ -8,7 +8,7 @@
 
 ---
 
-## 🛡️ about
+## 🛡️ About
 
 Focused on **offensive security, networking, and practical security tooling**.
 
@@ -18,7 +18,7 @@ Currently working on security tools, network utilities, labs, and infrastructure
 
 ---
 
-## 🛰️ current focus
+## 🛰️ Current focus
 
 - Offensive Security
 - Network Security
@@ -30,7 +30,7 @@ Currently working on security tools, network utilities, labs, and infrastructure
 
 ---
 
-## 🧪 selected work
+## 🧪 Selected work
 
 ### [TwardyPass](https://github.com/TW4RDYDEV/TwardyPass)
 Privacy-first password security workbench with local strength analysis, breach intelligence, secure generation, and a modern PySide6/QML interface.
@@ -40,7 +40,7 @@ Python desktop application for discovering active devices on local networks.
 
 ---
 
-## 📡 hack the box
+## 📡 Hack the box
 
 <a href="https://app.hackthebox.com/public/users/3331404">
   <img src="./assets/htb-card.svg" width="100%" alt="Twardowski Hack The Box profile">
@@ -48,7 +48,7 @@ Python desktop application for discovering active devices on local networks.
 
 ---
 
-## 🎧 track
+## 🎧 Track
 
 <br>
 
@@ -66,13 +66,13 @@ Python desktop application for discovering active devices on local networks.
 
 ---
 
-## ⚙️ stack
+## ⚙️ Stack
 
 `Python` · `Linux` · `Git` · `Nmap` · `Wireshark` · `Qt / QML` · `Networking`
 
 ---
 
-## 🤝 work with me
+## 🤝 Work with me
 
 I'm open to **collaborations, cybersecurity projects, security tooling, labs, networking projects, and interesting ideas in general**.
 
