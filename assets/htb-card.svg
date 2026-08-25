@@ -1,110 +1,567 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" role="img" aria-label="Hack The Box profile stats">
-  <defs>
-    <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.22"/>
-      <stop offset="38%" stop-color="#9fef00" stop-opacity="0.07"/>
-      <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="820"
+    height="410"
+    viewBox="0 0 820 410"
+    role="img"
+    aria-label="Hack The Box profile"
+>
+
+<defs>
+
+    <linearGradient id="header" x1="0" x2="1">
+        <stop
+            offset="0%"
+            stop-color="#9fef00"
+            stop-opacity="0.22"
+        />
+
+        <stop
+            offset="48%"
+            stop-color="#9fef00"
+            stop-opacity="0.055"
+        />
+
+        <stop
+            offset="100%"
+            stop-color="#9fef00"
+            stop-opacity="0"
+        />
     </linearGradient>
 
-    <linearGradient id="heroOverlay" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
+    <linearGradient id="rankBar" x1="0" x2="1">
+
+        <stop
+            offset="0%"
+            stop-color="#b5ff00"
+        />
+
+        <stop
+            offset="100%"
+            stop-color="#8fe600"
+        />
+
     </linearGradient>
 
-    <linearGradient id="htbBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#bfff00"/>
-      <stop offset="100%" stop-color="#95eb00"/>
+    <linearGradient id="labsBar" x1="0" x2="1">
+
+        <stop
+            offset="0%"
+            stop-color="#79b8ff"
+        />
+
+        <stop
+            offset="100%"
+            stop-color="#58a6ff"
+        />
+
     </linearGradient>
 
-    <linearGradient id="labsBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8bc1ff"/>
-      <stop offset="100%" stop-color="#58a6ff"/>
-    </linearGradient>
-
-    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
-      <path d="M 18 0 L 0 0 0 18" fill="none" stroke="#1f2630" stroke-width="1"/>
+    <pattern
+        id="grid"
+        width="20"
+        height="20"
+        patternUnits="userSpaceOnUse"
+    >
+        <path
+            d="M20 0H0V20"
+            fill="none"
+            stroke="#9fef00"
+            stroke-opacity="0.045"
+        />
     </pattern>
 
-    <filter id="glowGreen" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+</defs>
 
-    <filter id="shadowSoft" x="-20%" y="-20%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
-    </filter>
-  </defs>
 
-  <!-- Outer card -->
-  <rect x="1" y="1" width="818" height="418" rx="22" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+<!-- BASE -->
 
-  <!-- Hero top -->
-  <rect x="1" y="1" width="818" height="112" rx="22" fill="url(#bgGlow)"/>
-  <rect x="1" y="1" width="818" height="112" rx="22" fill="url(#heroOverlay)"/>
-  <rect x="1" y="1" width="818" height="112" rx="22" fill="url(#grid)" opacity="0.30"/>
-  <rect x="1" y="90" width="818" height="24" fill="#0d1117"/>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="408"
+    rx="20"
+    fill="#0d1117"
+    stroke="#30363d"
+    stroke-width="2"
+/>
 
-  <!-- Main inner panel -->
-  <rect x="20" y="22" width="780" height="376" rx="20" fill="none" stroke="#21262d"/>
 
-  <g font-family="Segoe UI, Inter, Arial, sans-serif">
-    <!-- Header -->
-    <text x="38" y="48" font-size="13" font-weight="700" fill="#9aa4b2" letter-spacing="2.6">HACK THE BOX</text>
-    <text x="38" y="88" font-size="31" font-weight="900" fill="#f0f6fc">Twardowski</text>
+<!-- HEADER -->
 
-    <rect x="640" y="34" width="140" height="36" rx="11" fill="#161b22" stroke="#30363d"/>
-    <text x="710" y="57" text-anchor="middle" font-size="12" font-weight="800" fill="#f0f6fc">PUBLIC PROFILE</text>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="100"
+    rx="20"
+    fill="url(#header)"
+/>
 
-    <rect x="640" y="80" width="78" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
-    <text x="679" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">ID 3331404</text>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="100"
+    rx="20"
+    fill="url(#grid)"
+/>
 
-    <rect x="726" y="80" width="54" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
-    <text x="753" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">CA</text>
+<rect
+    x="1"
+    y="82"
+    width="818"
+    height="20"
+    fill="#0d1117"
+/>
 
-    <!-- Left feature block -->
-    <text x="38" y="142" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">HTB RANK</text>
-    <text x="38" y="188" font-size="29" font-weight="900" fill="#a8ff00" filter="url(#glowGreen)">PROFESSIONAL</text>
 
-    <text x="38" y="216" font-size="12" fill="#8b949e">Progress to next level</text>
+<g
+    font-family="Segoe UI, Arial, sans-serif"
+>
 
-    <rect x="38" y="230" width="470" height="12" rx="6" fill="#1f2630"/>
-    <rect x="38" y="230" width="423.5" height="12" rx="6" fill="url(#htbBar)"/>
 
-    <text x="38" y="262" font-size="12" fill="#c9d1d9">1,048 / 1,163 XP</text>
+<!-- TITLE -->
 
-    <!-- Right feature box -->
-    <rect x="560" y="142" width="220" height="122" rx="18" fill="#0f1620" stroke="#21262d" filter="url(#shadowSoft)"/>
-    <text x="582" y="170" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">LEVEL</text>
-    <text x="582" y="210" font-size="42" font-weight="900" fill="#f0f6fc">46</text>
-    <text x="582" y="234" font-size="13" font-weight="700" fill="#8b949e">Current HTB progression</text>
+<text
+    x="36"
+    y="40"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="2.2"
+    fill="#8b949e"
+>
+HACK THE BOX
+</text>
 
-    <line x1="582" y1="248" x2="758" y2="248" stroke="#21262d"/>
-    <text x="582" y="286" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">TOTAL XP</text>
-    <text x="758" y="286" text-anchor="end" font-size="18" font-weight="800" fill="#f0f6fc">27,370</text>
+<text
+    x="36"
+    y="76"
+    font-size="30"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+Twardowski
+</text>
 
-    <!-- Divider -->
-    <line x1="38" y1="286" x2="780" y2="286" stroke="#21262d"/>
 
-    <!-- Labs section -->
-    <text x="38" y="316" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">LABS RANK</text>
-    <text x="38" y="356" font-size="24" font-weight="900" fill="#f0f6fc">Script Kiddie</text>
-    <text x="510" y="356" text-anchor="end" font-size="12" font-weight="800" fill="#8b949e">70.2% TO HACKER</text>
+<!-- PROFILE CHIPS -->
 
-    <rect x="38" y="368" width="470" height="10" rx="5" fill="#1f2630"/>
-    <rect x="38" y="368" width="329.9" height="10" rx="5" fill="url(#labsBar)"/>
+<rect
+    x="626"
+    y="27"
+    width="154"
+    height="38"
+    rx="11"
+    fill="#161b22"
+    stroke="#30363d"
+/>
 
-    <!-- Bottom premium stat pills -->
-    <rect x="560" y="318" width="220" height="60" rx="16" fill="#0f1620" stroke="#21262d"/>
-    <text x="582" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">GLOBAL</text>
-    <text x="582" y="364" font-size="18" font-weight="900" fill="#f0f6fc">#1,013</text>
+<text
+    x="703"
+    y="51"
+    text-anchor="middle"
+    font-size="12"
+    font-weight="700"
+    fill="#f0f6fc"
+>
+PUBLIC PROFILE
+</text>
 
-    <text x="670" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">SYSTEM</text>
-    <text x="670" y="364" font-size="18" font-weight="900" fill="#f0f6fc">39</text>
 
-    <text x="736" y="340" text-anchor="end" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">USER</text>
-    <text x="736" y="364" text-anchor="end" font-size="18" font-weight="900" fill="#f0f6fc">39</text>
-  </g>
+<rect
+    x="626"
+    y="72"
+    width="98"
+    height="25"
+    rx="8"
+    fill="#11161d"
+    stroke="#21262d"
+/>
+
+<text
+    x="675"
+    y="89"
+    text-anchor="middle"
+    font-size="10"
+    font-weight="600"
+    fill="#8b949e"
+>
+ID 3331404
+</text>
+
+
+<rect
+    x="732"
+    y="72"
+    width="48"
+    height="25"
+    rx="8"
+    fill="#11161d"
+    stroke="#21262d"
+/>
+
+<text
+    x="756"
+    y="89"
+    text-anchor="middle"
+    font-size="10"
+    font-weight="700"
+    fill="#8b949e"
+>
+CA
+</text>
+
+
+<!-- HTB RANK -->
+
+<text
+    x="36"
+    y="134"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.8"
+    fill="#8b949e"
+>
+HTB RANK
+</text>
+
+
+<text
+    x="36"
+    y="174"
+    font-size="28"
+    font-weight="900"
+    fill="#9fef00"
+>
+PROFESSIONAL
+</text>
+
+
+<text
+    x="36"
+    y="199"
+    font-size="11"
+    fill="#8b949e"
+>
+Progress to level 47
+</text>
+
+
+<!-- RANK BAR -->
+
+<rect
+    x="36"
+    y="213"
+    width="490"
+    height="10"
+    rx="5"
+    fill="#21262d"
+/>
+
+<rect
+    x="36"
+    y="213"
+    width="441.5"
+    height="10"
+    rx="5"
+    fill="url(#rankBar)"
+/>
+
+
+<text
+    x="36"
+    y="245"
+    font-size="11"
+    fill="#c9d1d9"
+>
+1,048 / 1,163 XP
+</text>
+
+
+<text
+    x="526"
+    y="245"
+    text-anchor="end"
+    font-size="11"
+    font-weight="700"
+    fill="#8b949e"
+>
+90.1%
+</text>
+
+
+<!-- LEVEL CARD -->
+
+<rect
+    x="560"
+    y="124"
+    width="220"
+    height="130"
+    rx="17"
+    fill="#101720"
+    stroke="#21262d"
+/>
+
+
+<text
+    x="582"
+    y="151"
+    font-size="10"
+    font-weight="700"
+    letter-spacing="1.5"
+    fill="#8b949e"
+>
+LEVEL
+</text>
+
+
+<text
+    x="582"
+    y="194"
+    font-size="44"
+    font-weight="900"
+    fill="#f0f6fc"
+>
+46
+</text>
+
+
+<line
+    x1="582"
+    y1="211"
+    x2="758"
+    y2="211"
+    stroke="#21262d"
+/>
+
+
+<text
+    x="582"
+    y="235"
+    font-size="10"
+    font-weight="700"
+    letter-spacing="1.3"
+    fill="#8b949e"
+>
+TOTAL XP
+</text>
+
+
+<text
+    x="758"
+    y="236"
+    text-anchor="end"
+    font-size="18"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+27,370
+</text>
+
+
+<!-- MAIN DIVIDER -->
+
+<line
+    x1="36"
+    y1="274"
+    x2="780"
+    y2="274"
+    stroke="#21262d"
+/>
+
+
+<!-- LABS -->
+
+<text
+    x="36"
+    y="305"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.8"
+    fill="#8b949e"
+>
+LABS RANK
+</text>
+
+
+<text
+    x="36"
+    y="342"
+    font-size="23"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+Script Kiddie
+</text>
+
+
+<text
+    x="526"
+    y="342"
+    text-anchor="end"
+    font-size="11"
+    font-weight="700"
+    fill="#8b949e"
+>
+70.2% TO HACKER
+</text>
+
+
+<!-- LABS BAR -->
+
+<rect
+    x="36"
+    y="355"
+    width="490"
+    height="9"
+    rx="4.5"
+    fill="#21262d"
+/>
+
+<rect
+    x="36"
+    y="355"
+    width="344.0"
+    height="9"
+    rx="4.5"
+    fill="url(#labsBar)"
+/>
+
+
+<!-- LAB STATS -->
+
+<rect
+    x="560"
+    y="294"
+    width="220"
+    height="70"
+    rx="17"
+    fill="#101720"
+    stroke="#21262d"
+/>
+
+
+<line
+    x1="633"
+    y1="309"
+    x2="633"
+    y2="349"
+    stroke="#21262d"
+/>
+
+<line
+    x1="707"
+    y1="309"
+    x2="707"
+    y2="349"
+    stroke="#21262d"
+/>
+
+
+<!-- GLOBAL -->
+
+<text
+    x="596"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+GLOBAL
+</text>
+
+<text
+    x="596"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+#1,013
+</text>
+
+
+<!-- SYSTEM -->
+
+<text
+    x="670"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+SYSTEM
+</text>
+
+<text
+    x="670"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+39
+</text>
+
+
+<!-- USER -->
+
+<text
+    x="744"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+USER
+</text>
+
+<text
+    x="744"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+39
+</text>
+
+
+<!-- FOOTER -->
+
+<text
+    x="36"
+    y="394"
+    font-size="10"
+    fill="#484f58"
+>
+LIVE HTB PROFILE DATA
+</text>
+
+
+<text
+    x="780"
+    y="394"
+    text-anchor="end"
+    font-size="10"
+    fill="#484f58"
+>
+TW4RDYDEV
+</text>
+
+
+</g>
+
 </svg>
