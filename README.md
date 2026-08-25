@@ -8,7 +8,7 @@
 
 ---
 
-## 🛡️ About
+## 💎 About
 
 Focused on **offensive security, networking, and practical security tooling**.
 
@@ -68,7 +68,61 @@ Python desktop application for discovering active devices on local networks.
 
 ## ⚙️ Stack
 
-`Python` · `Linux` · `Git` · `Nmap` · `Wireshark` · `Qt / QML` · `Networking`
+<div align="center">
+
+<strong>Development</strong>
+
+<br><br>
+
+<img src="https://skillicons.dev/icons?i=python,lua,js,html,css,react,nextjs,nodejs,npm&theme=dark" />
+
+<br><br><br>
+
+<strong>Security & Networking</strong>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Nmap-0D1117?style=for-the-badge&logo=nmap&logoColor=white" />
+<img src="https://img.shields.io/badge/Wireshark-0D1117?style=for-the-badge&logo=wireshark&logoColor=1679A7" />
+<img src="https://img.shields.io/badge/Hack_The_Box-0D1117?style=for-the-badge&logo=hackthebox&logoColor=9FEF00" />
+<img src="https://img.shields.io/badge/Cisco-0D1117?style=for-the-badge&logo=cisco&logoColor=1BA0D7" />
+<img src="https://img.shields.io/badge/Packet_Tracer-0D1117?style=for-the-badge&logo=cisco&logoColor=white" />
+<img src="https://img.shields.io/badge/TCP%2FIP-0D1117?style=for-the-badge&logoColor=white" />
+
+<br><br><br>
+
+<strong>Systems & Virtualization</strong>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Fedora-0D1117?style=for-the-badge&logo=fedora&logoColor=51A2DA" />
+<img src="https://img.shields.io/badge/Ubuntu-0D1117?style=for-the-badge&logo=ubuntu&logoColor=E95420" />
+<img src="https://img.shields.io/badge/Windows-0D1117?style=for-the-badge&logo=windows11&logoColor=0078D4" />
+<img src="https://img.shields.io/badge/VMware-0D1117?style=for-the-badge&logo=vmware&logoColor=white" />
+
+<br><br><br>
+
+<strong>Frameworks & Interfaces</strong>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Qt_%2F_QML-0D1117?style=for-the-badge&logo=qt&logoColor=41CD52" />
+<img src="https://img.shields.io/badge/PySide6-0D1117?style=for-the-badge&logo=python&logoColor=3776AB" />
+<img src="https://img.shields.io/badge/Tkinter-0D1117?style=for-the-badge&logo=python&logoColor=FFD43B" />
+
+<br><br><br>
+
+<strong>Tools & Workflow</strong>
+
+<br><br>
+
+<img src="https://skillicons.dev/icons?i=git,github,vscode,bash,powershell,markdown&theme=dark" />
+
+<br><br>
+
+<img src="https://img.shields.io/badge/GitHub_Actions-0D1117?style=for-the-badge&logo=githubactions&logoColor=2088FF" />
+
+</div>
 
 ---
 
