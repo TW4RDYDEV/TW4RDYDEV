@@ -35,6 +35,7 @@ labs_progress = float(profile.get("current_rank_progress") or 0)
 ranking = profile.get("ranking", 0)
 system_owns = profile.get("system_owns", 0)
 user_owns = profile.get("user_owns", 0)
+country_code = profile.get("country_code", "N/A")
 
 level = experience.get("level", 0)
 level_title = experience.get("levelTitle", "N/A")
@@ -56,99 +57,123 @@ def fmt_num(v):
         return str(v)
 
 
-# Layout sizing
-W = 760
-H = 355
+W = 820
+H = 420
 
-xp_bar_width = 520
+xp_bar_width = 470
 xp_fill = max(0, min(xp_bar_width, xp_bar_width * level_pct / 100))
 
-labs_bar_width = 520
+labs_bar_width = 470
 labs_fill = max(0, min(labs_bar_width, labs_bar_width * labs_progress / 100))
 
 svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Hack The Box profile stats">
   <defs>
-    <linearGradient id="heroGlow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.24"/>
-      <stop offset="45%" stop-color="#9fef00" stop-opacity="0.06"/>
+    <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.22"/>
+      <stop offset="38%" stop-color="#9fef00" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="heroOverlay" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.18"/>
       <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
     </linearGradient>
 
     <linearGradient id="htbBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#b6ff00"/>
-      <stop offset="100%" stop-color="#8fe600"/>
+      <stop offset="0%" stop-color="#bfff00"/>
+      <stop offset="100%" stop-color="#95eb00"/>
     </linearGradient>
 
     <linearGradient id="labsBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#79b8ff"/>
+      <stop offset="0%" stop-color="#8bc1ff"/>
       <stop offset="100%" stop-color="#58a6ff"/>
     </linearGradient>
 
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M 18 0 L 0 0 0 18" fill="none" stroke="#1f2630" stroke-width="1"/>
+    </pattern>
+
+    <filter id="glowGreen" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="8" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <filter id="shadowSoft" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
   </defs>
 
-  <!-- Card -->
-  <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
-  <rect x="1" y="1" width="{W-2}" height="105" rx="18" fill="url(#heroGlow)"/>
-  <rect x="1" y="86" width="{W-2}" height="20" fill="#0d1117"/>
+  <!-- Outer card -->
+  <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="22" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Hero top -->
+  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#bgGlow)"/>
+  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#heroOverlay)"/>
+  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#grid)" opacity="0.30"/>
+  <rect x="1" y="90" width="{W-2}" height="24" fill="#0d1117"/>
+
+  <!-- Main inner panel -->
+  <rect x="20" y="22" width="{W-40}" height="{H-44}" rx="20" fill="none" stroke="#21262d"/>
 
   <g font-family="Segoe UI, Inter, Arial, sans-serif">
     <!-- Header -->
-    <text x="34" y="40" font-size="13" font-weight="700" fill="#8b949e" letter-spacing="2">HACK THE BOX</text>
-    <text x="34" y="74" font-size="29" font-weight="800" fill="#f0f6fc">{esc(name)}</text>
+    <text x="38" y="48" font-size="13" font-weight="700" fill="#9aa4b2" letter-spacing="2.6">HACK THE BOX</text>
+    <text x="38" y="88" font-size="31" font-weight="900" fill="#f0f6fc">{esc(name)}</text>
 
-    <rect x="585" y="24" width="140" height="34" rx="9" fill="#161b22" stroke="#30363d"/>
-    <text x="655" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#c9d1d9">PUBLIC PROFILE</text>
-    <text x="585" y="76" font-size="12" fill="#6e7681">ID {USER_ID}</text>
+    <rect x="640" y="34" width="140" height="36" rx="11" fill="#161b22" stroke="#30363d"/>
+    <text x="710" y="57" text-anchor="middle" font-size="12" font-weight="800" fill="#f0f6fc">PUBLIC PROFILE</text>
 
-    <!-- Section 1 -->
-    <text x="34" y="128" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">HTB RANK</text>
-    <text x="34" y="165" font-size="27" font-weight="900" fill="#9fef00" filter="url(#softGlow)">{esc(level_title).upper()}</text>
+    <rect x="640" y="80" width="78" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
+    <text x="679" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">ID {USER_ID}</text>
 
-    <rect x="633" y="139" width="92" height="34" rx="10" fill="#161b22" stroke="#30363d"/>
-    <text x="679" y="161" text-anchor="middle" font-size="18" font-weight="800" fill="#f0f6fc">LVL {esc(level)}</text>
+    <rect x="726" y="80" width="54" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
+    <text x="753" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">{esc(country_code)}</text>
 
-    <rect x="34" y="183" width="{xp_bar_width}" height="10" rx="5" fill="#21262d"/>
-    <rect x="34" y="183" width="{xp_fill:.1f}" height="10" rx="5" fill="url(#htbBar)"/>
+    <!-- Left feature block -->
+    <text x="38" y="142" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">HTB RANK</text>
+    <text x="38" y="188" font-size="29" font-weight="900" fill="#a8ff00" filter="url(#glowGreen)">{esc(level_title).upper()}</text>
 
-    <text x="34" y="214" font-size="12" fill="#8b949e">Progress to next level</text>
-    <text x="618" y="214" text-anchor="end" font-size="12" fill="#c9d1d9">{fmt_num(level_xp)} / {fmt_num(level_total)} XP</text>
+    <text x="38" y="216" font-size="12" fill="#8b949e">Progress to next level</text>
+
+    <rect x="38" y="230" width="{xp_bar_width}" height="12" rx="6" fill="#1f2630"/>
+    <rect x="38" y="230" width="{xp_fill:.1f}" height="12" rx="6" fill="url(#htbBar)"/>
+
+    <text x="38" y="262" font-size="12" fill="#c9d1d9">{fmt_num(level_xp)} / {fmt_num(level_total)} XP</text>
+
+    <!-- Right feature box -->
+    <rect x="560" y="142" width="220" height="122" rx="18" fill="#0f1620" stroke="#21262d" filter="url(#shadowSoft)"/>
+    <text x="582" y="170" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">LEVEL</text>
+    <text x="582" y="210" font-size="42" font-weight="900" fill="#f0f6fc">46</text>
+    <text x="582" y="234" font-size="13" font-weight="700" fill="#8b949e">Current HTB progression</text>
+
+    <line x1="582" y1="248" x2="758" y2="248" stroke="#21262d"/>
+    <text x="582" y="286" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">TOTAL XP</text>
+    <text x="758" y="286" text-anchor="end" font-size="18" font-weight="800" fill="#f0f6fc">{fmt_num(total_xp)}</text>
 
     <!-- Divider -->
-    <line x1="34" y1="233" x2="726" y2="233" stroke="#21262d"/>
+    <line x1="38" y1="286" x2="780" y2="286" stroke="#21262d"/>
 
-    <!-- Section 2 -->
-    <text x="34" y="258" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">LABS RANK</text>
-    <text x="34" y="292" font-size="23" font-weight="800" fill="#f0f6fc">{esc(labs_rank)}</text>
+    <!-- Labs section -->
+    <text x="38" y="316" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">LABS RANK</text>
+    <text x="38" y="356" font-size="24" font-weight="900" fill="#f0f6fc">{esc(labs_rank)}</text>
+    <text x="510" y="356" text-anchor="end" font-size="12" font-weight="800" fill="#8b949e">{labs_progress:.1f}% TO {esc(next_rank).upper()}</text>
 
-    <text x="726" y="292" text-anchor="end" font-size="12" font-weight="700" fill="#8b949e">{labs_progress:.1f}% TO {esc(next_rank).upper()}</text>
+    <rect x="38" y="368" width="{labs_bar_width}" height="10" rx="5" fill="#1f2630"/>
+    <rect x="38" y="368" width="{labs_fill:.1f}" height="10" rx="5" fill="url(#labsBar)"/>
 
-    <rect x="34" y="304" width="{labs_bar_width}" height="8" rx="4" fill="#21262d"/>
-    <rect x="34" y="304" width="{labs_fill:.1f}" height="8" rx="4" fill="url(#labsBar)"/>
+    <!-- Bottom premium stat pills -->
+    <rect x="560" y="318" width="220" height="60" rx="16" fill="#0f1620" stroke="#21262d"/>
+    <text x="582" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">GLOBAL</text>
+    <text x="582" y="364" font-size="18" font-weight="900" fill="#f0f6fc">#{fmt_num(ranking)}</text>
 
-    <!-- Stats row -->
-    <rect x="34" y="324" width="155" height="22" rx="8" fill="#11161d"/>
-    <rect x="208" y="324" width="155" height="22" rx="8" fill="#11161d"/>
-    <rect x="382" y="324" width="155" height="22" rx="8" fill="#11161d"/>
-    <rect x="556" y="324" width="170" height="22" rx="8" fill="#11161d"/>
+    <text x="670" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">SYSTEM</text>
+    <text x="670" y="364" font-size="18" font-weight="900" fill="#f0f6fc">{fmt_num(system_owns)}</text>
 
-    <text x="46" y="339" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.3">GLOBAL</text>
-    <text x="98" y="339" font-size="12" font-weight="800" fill="#f0f6fc">#{fmt_num(ranking)}</text>
-
-    <text x="220" y="339" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.3">SYSTEM OWNS</text>
-    <text x="318" y="339" font-size="12" font-weight="800" fill="#f0f6fc">{fmt_num(system_owns)}</text>
-
-    <text x="394" y="339" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.3">USER OWNS</text>
-    <text x="474" y="339" font-size="12" font-weight="800" fill="#f0f6fc">{fmt_num(user_owns)}</text>
-
-    <text x="568" y="339" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.3">TOTAL XP</text>
-    <text x="628" y="339" font-size="12" font-weight="800" fill="#f0f6fc">{fmt_num(total_xp)}</text>
+    <text x="736" y="340" text-anchor="end" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">USER</text>
+    <text x="736" y="364" text-anchor="end" font-size="18" font-weight="900" fill="#f0f6fc">{fmt_num(user_owns)}</text>
   </g>
 </svg>
 """
