@@ -4,6 +4,7 @@ import os
 import urllib.request
 from pathlib import Path
 
+
 TOKEN = os.environ["HTB_TOKEN"].strip()
 USER_ID = "3331404"
 BASE = "https://labs.hackthebox.com/api"
@@ -18,167 +19,688 @@ def get_json(url):
             "User-Agent": "TW4RDYDEV-GitHub-Profile/1.0",
         },
     )
+
     with urllib.request.urlopen(req, timeout=30) as res:
         return json.load(res)
 
 
+def esc(value):
+    return html.escape(str(value))
+
+
+def fmt_num(value):
+    try:
+        return f"{int(value):,}"
+    except Exception:
+        return str(value)
+
+
+# ── Fetch HTB data ────────────────────────────────────────────────
+
 user_info = get_json(f"{BASE}/v4/user/info")
-profile = get_json(f"{BASE}/v4/user/profile/basic/{USER_ID}")["profile"]
+
+profile = get_json(
+    f"{BASE}/v4/user/profile/basic/{USER_ID}"
+)["profile"]
 
 account_id = user_info["info"]["account_id"]
-experience = get_json(f"{BASE}/experience/v1/account/{account_id}")
+
+experience = get_json(
+    f"{BASE}/experience/v1/account/{account_id}"
+)
+
+
+# ── Profile ───────────────────────────────────────────────────────
 
 name = profile.get("name", "Twardowski")
+country = profile.get("country_code", "CA")
+
 labs_rank = profile.get("rank", "N/A")
 next_rank = profile.get("next_rank", "N/A")
-labs_progress = float(profile.get("current_rank_progress") or 0)
+labs_progress = float(
+    profile.get("current_rank_progress") or 0
+)
+
 ranking = profile.get("ranking", 0)
 system_owns = profile.get("system_owns", 0)
 user_owns = profile.get("user_owns", 0)
-country_code = profile.get("country_code", "N/A")
+
+
+# ── Experience ────────────────────────────────────────────────────
 
 level = experience.get("level", 0)
 level_title = experience.get("levelTitle", "N/A")
-total_xp = int(experience.get("totalExperiencePoints") or 0)
-level_xp = int(experience.get("levelExperiencePoints") or 0)
-xp_remaining = int(experience.get("experienceUntilNextLevel") or 0)
+
+total_xp = int(
+    experience.get("totalExperiencePoints") or 0
+)
+
+level_xp = int(
+    experience.get("levelExperiencePoints") or 0
+)
+
+xp_remaining = int(
+    experience.get("experienceUntilNextLevel") or 0
+)
+
 level_total = level_xp + xp_remaining
-level_pct = (level_xp / level_total * 100) if level_total else 0
+
+level_progress = (
+    level_xp / level_total * 100
+    if level_total
+    else 0
+)
 
 
-def esc(v):
-    return html.escape(str(v))
+# ── Layout calculations ──────────────────────────────────────────
+
+WIDTH = 820
+HEIGHT = 410
+
+RANK_BAR_WIDTH = 490
+LABS_BAR_WIDTH = 490
+
+rank_fill = max(
+    0,
+    min(
+        RANK_BAR_WIDTH,
+        RANK_BAR_WIDTH * level_progress / 100,
+    ),
+)
+
+labs_fill = max(
+    0,
+    min(
+        LABS_BAR_WIDTH,
+        LABS_BAR_WIDTH * labs_progress / 100,
+    ),
+)
 
 
-def fmt_num(v):
-    try:
-        return f"{int(v):,}"
-    except Exception:
-        return str(v)
+# ── SVG ──────────────────────────────────────────────────────────
 
+svg = f"""
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="{WIDTH}"
+    height="{HEIGHT}"
+    viewBox="0 0 {WIDTH} {HEIGHT}"
+    role="img"
+    aria-label="Hack The Box profile"
+>
 
-W = 820
-H = 420
+<defs>
 
-xp_bar_width = 470
-xp_fill = max(0, min(xp_bar_width, xp_bar_width * level_pct / 100))
+    <linearGradient id="header" x1="0" x2="1">
+        <stop
+            offset="0%"
+            stop-color="#9fef00"
+            stop-opacity="0.22"
+        />
 
-labs_bar_width = 470
-labs_fill = max(0, min(labs_bar_width, labs_bar_width * labs_progress / 100))
+        <stop
+            offset="48%"
+            stop-color="#9fef00"
+            stop-opacity="0.055"
+        />
 
-svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Hack The Box profile stats">
-  <defs>
-    <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.22"/>
-      <stop offset="38%" stop-color="#9fef00" stop-opacity="0.07"/>
-      <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
+        <stop
+            offset="100%"
+            stop-color="#9fef00"
+            stop-opacity="0"
+        />
     </linearGradient>
 
-    <linearGradient id="heroOverlay" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#9fef00" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
+    <linearGradient id="rankBar" x1="0" x2="1">
+
+        <stop
+            offset="0%"
+            stop-color="#b5ff00"
+        />
+
+        <stop
+            offset="100%"
+            stop-color="#8fe600"
+        />
+
     </linearGradient>
 
-    <linearGradient id="htbBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#bfff00"/>
-      <stop offset="100%" stop-color="#95eb00"/>
+    <linearGradient id="labsBar" x1="0" x2="1">
+
+        <stop
+            offset="0%"
+            stop-color="#79b8ff"
+        />
+
+        <stop
+            offset="100%"
+            stop-color="#58a6ff"
+        />
+
     </linearGradient>
 
-    <linearGradient id="labsBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8bc1ff"/>
-      <stop offset="100%" stop-color="#58a6ff"/>
-    </linearGradient>
-
-    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
-      <path d="M 18 0 L 0 0 0 18" fill="none" stroke="#1f2630" stroke-width="1"/>
+    <pattern
+        id="grid"
+        width="20"
+        height="20"
+        patternUnits="userSpaceOnUse"
+    >
+        <path
+            d="M20 0H0V20"
+            fill="none"
+            stroke="#9fef00"
+            stroke-opacity="0.045"
+        />
     </pattern>
 
-    <filter id="glowGreen" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+</defs>
 
-    <filter id="shadowSoft" x="-20%" y="-20%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
-    </filter>
-  </defs>
 
-  <!-- Outer card -->
-  <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="22" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+<!-- BASE -->
 
-  <!-- Hero top -->
-  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#bgGlow)"/>
-  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#heroOverlay)"/>
-  <rect x="1" y="1" width="{W-2}" height="112" rx="22" fill="url(#grid)" opacity="0.30"/>
-  <rect x="1" y="90" width="{W-2}" height="24" fill="#0d1117"/>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="408"
+    rx="20"
+    fill="#0d1117"
+    stroke="#30363d"
+    stroke-width="2"
+/>
 
-  <!-- Main inner panel -->
-  <rect x="20" y="22" width="{W-40}" height="{H-44}" rx="20" fill="none" stroke="#21262d"/>
 
-  <g font-family="Segoe UI, Inter, Arial, sans-serif">
-    <!-- Header -->
-    <text x="38" y="48" font-size="13" font-weight="700" fill="#9aa4b2" letter-spacing="2.6">HACK THE BOX</text>
-    <text x="38" y="88" font-size="31" font-weight="900" fill="#f0f6fc">{esc(name)}</text>
+<!-- HEADER -->
 
-    <rect x="640" y="34" width="140" height="36" rx="11" fill="#161b22" stroke="#30363d"/>
-    <text x="710" y="57" text-anchor="middle" font-size="12" font-weight="800" fill="#f0f6fc">PUBLIC PROFILE</text>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="100"
+    rx="20"
+    fill="url(#header)"
+/>
 
-    <rect x="640" y="80" width="78" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
-    <text x="679" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">ID {USER_ID}</text>
+<rect
+    x="1"
+    y="1"
+    width="818"
+    height="100"
+    rx="20"
+    fill="url(#grid)"
+/>
 
-    <rect x="726" y="80" width="54" height="24" rx="8" fill="#11161d" stroke="#21262d"/>
-    <text x="753" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#8b949e">{esc(country_code)}</text>
+<rect
+    x="1"
+    y="82"
+    width="818"
+    height="20"
+    fill="#0d1117"
+/>
 
-    <!-- Left feature block -->
-    <text x="38" y="142" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">HTB RANK</text>
-    <text x="38" y="188" font-size="29" font-weight="900" fill="#a8ff00" filter="url(#glowGreen)">{esc(level_title).upper()}</text>
 
-    <text x="38" y="216" font-size="12" fill="#8b949e">Progress to next level</text>
+<g
+    font-family="Segoe UI, Arial, sans-serif"
+>
 
-    <rect x="38" y="230" width="{xp_bar_width}" height="12" rx="6" fill="#1f2630"/>
-    <rect x="38" y="230" width="{xp_fill:.1f}" height="12" rx="6" fill="url(#htbBar)"/>
 
-    <text x="38" y="262" font-size="12" fill="#c9d1d9">{fmt_num(level_xp)} / {fmt_num(level_total)} XP</text>
+<!-- TITLE -->
 
-    <!-- Right feature box -->
-    <rect x="560" y="142" width="220" height="122" rx="18" fill="#0f1620" stroke="#21262d" filter="url(#shadowSoft)"/>
-    <text x="582" y="170" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">LEVEL</text>
-    <text x="582" y="210" font-size="42" font-weight="900" fill="#f0f6fc">46</text>
-    <text x="582" y="234" font-size="13" font-weight="700" fill="#8b949e">Current HTB progression</text>
+<text
+    x="36"
+    y="40"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="2.2"
+    fill="#8b949e"
+>
+HACK THE BOX
+</text>
 
-    <line x1="582" y1="248" x2="758" y2="248" stroke="#21262d"/>
-    <text x="582" y="286" font-size="11" font-weight="700" fill="#8b949e" letter-spacing="1.6">TOTAL XP</text>
-    <text x="758" y="286" text-anchor="end" font-size="18" font-weight="800" fill="#f0f6fc">{fmt_num(total_xp)}</text>
+<text
+    x="36"
+    y="76"
+    font-size="30"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+{esc(name)}
+</text>
 
-    <!-- Divider -->
-    <line x1="38" y1="286" x2="780" y2="286" stroke="#21262d"/>
 
-    <!-- Labs section -->
-    <text x="38" y="316" font-size="12" font-weight="700" fill="#8b949e" letter-spacing="1.8">LABS RANK</text>
-    <text x="38" y="356" font-size="24" font-weight="900" fill="#f0f6fc">{esc(labs_rank)}</text>
-    <text x="510" y="356" text-anchor="end" font-size="12" font-weight="800" fill="#8b949e">{labs_progress:.1f}% TO {esc(next_rank).upper()}</text>
+<!-- PROFILE CHIPS -->
 
-    <rect x="38" y="368" width="{labs_bar_width}" height="10" rx="5" fill="#1f2630"/>
-    <rect x="38" y="368" width="{labs_fill:.1f}" height="10" rx="5" fill="url(#labsBar)"/>
+<rect
+    x="626"
+    y="27"
+    width="154"
+    height="38"
+    rx="11"
+    fill="#161b22"
+    stroke="#30363d"
+/>
 
-    <!-- Bottom premium stat pills -->
-    <rect x="560" y="318" width="220" height="60" rx="16" fill="#0f1620" stroke="#21262d"/>
-    <text x="582" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">GLOBAL</text>
-    <text x="582" y="364" font-size="18" font-weight="900" fill="#f0f6fc">#{fmt_num(ranking)}</text>
+<text
+    x="703"
+    y="51"
+    text-anchor="middle"
+    font-size="12"
+    font-weight="700"
+    fill="#f0f6fc"
+>
+PUBLIC PROFILE
+</text>
 
-    <text x="670" y="340" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">SYSTEM</text>
-    <text x="670" y="364" font-size="18" font-weight="900" fill="#f0f6fc">{fmt_num(system_owns)}</text>
 
-    <text x="736" y="340" text-anchor="end" font-size="10" font-weight="700" fill="#6e7681" letter-spacing="1.4">USER</text>
-    <text x="736" y="364" text-anchor="end" font-size="18" font-weight="900" fill="#f0f6fc">{fmt_num(user_owns)}</text>
-  </g>
+<rect
+    x="626"
+    y="72"
+    width="98"
+    height="25"
+    rx="8"
+    fill="#11161d"
+    stroke="#21262d"
+/>
+
+<text
+    x="675"
+    y="89"
+    text-anchor="middle"
+    font-size="10"
+    font-weight="600"
+    fill="#8b949e"
+>
+ID {USER_ID}
+</text>
+
+
+<rect
+    x="732"
+    y="72"
+    width="48"
+    height="25"
+    rx="8"
+    fill="#11161d"
+    stroke="#21262d"
+/>
+
+<text
+    x="756"
+    y="89"
+    text-anchor="middle"
+    font-size="10"
+    font-weight="700"
+    fill="#8b949e"
+>
+{esc(country)}
+</text>
+
+
+<!-- HTB RANK -->
+
+<text
+    x="36"
+    y="134"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.8"
+    fill="#8b949e"
+>
+HTB RANK
+</text>
+
+
+<text
+    x="36"
+    y="174"
+    font-size="28"
+    font-weight="900"
+    fill="#9fef00"
+>
+{esc(level_title).upper()}
+</text>
+
+
+<text
+    x="36"
+    y="199"
+    font-size="11"
+    fill="#8b949e"
+>
+Progress to level {int(level) + 1}
+</text>
+
+
+<!-- RANK BAR -->
+
+<rect
+    x="36"
+    y="213"
+    width="{RANK_BAR_WIDTH}"
+    height="10"
+    rx="5"
+    fill="#21262d"
+/>
+
+<rect
+    x="36"
+    y="213"
+    width="{rank_fill:.1f}"
+    height="10"
+    rx="5"
+    fill="url(#rankBar)"
+/>
+
+
+<text
+    x="36"
+    y="245"
+    font-size="11"
+    fill="#c9d1d9"
+>
+{fmt_num(level_xp)} / {fmt_num(level_total)} XP
+</text>
+
+
+<text
+    x="526"
+    y="245"
+    text-anchor="end"
+    font-size="11"
+    font-weight="700"
+    fill="#8b949e"
+>
+{level_progress:.1f}%
+</text>
+
+
+<!-- LEVEL CARD -->
+
+<rect
+    x="560"
+    y="124"
+    width="220"
+    height="130"
+    rx="17"
+    fill="#101720"
+    stroke="#21262d"
+/>
+
+
+<text
+    x="582"
+    y="151"
+    font-size="10"
+    font-weight="700"
+    letter-spacing="1.5"
+    fill="#8b949e"
+>
+LEVEL
+</text>
+
+
+<text
+    x="582"
+    y="194"
+    font-size="44"
+    font-weight="900"
+    fill="#f0f6fc"
+>
+{esc(level)}
+</text>
+
+
+<line
+    x1="582"
+    y1="211"
+    x2="758"
+    y2="211"
+    stroke="#21262d"
+/>
+
+
+<text
+    x="582"
+    y="235"
+    font-size="10"
+    font-weight="700"
+    letter-spacing="1.3"
+    fill="#8b949e"
+>
+TOTAL XP
+</text>
+
+
+<text
+    x="758"
+    y="236"
+    text-anchor="end"
+    font-size="18"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+{fmt_num(total_xp)}
+</text>
+
+
+<!-- MAIN DIVIDER -->
+
+<line
+    x1="36"
+    y1="274"
+    x2="780"
+    y2="274"
+    stroke="#21262d"
+/>
+
+
+<!-- LABS -->
+
+<text
+    x="36"
+    y="305"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.8"
+    fill="#8b949e"
+>
+LABS RANK
+</text>
+
+
+<text
+    x="36"
+    y="342"
+    font-size="23"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+{esc(labs_rank)}
+</text>
+
+
+<text
+    x="526"
+    y="342"
+    text-anchor="end"
+    font-size="11"
+    font-weight="700"
+    fill="#8b949e"
+>
+{labs_progress:.1f}% TO {esc(next_rank).upper()}
+</text>
+
+
+<!-- LABS BAR -->
+
+<rect
+    x="36"
+    y="355"
+    width="{LABS_BAR_WIDTH}"
+    height="9"
+    rx="4.5"
+    fill="#21262d"
+/>
+
+<rect
+    x="36"
+    y="355"
+    width="{labs_fill:.1f}"
+    height="9"
+    rx="4.5"
+    fill="url(#labsBar)"
+/>
+
+
+<!-- LAB STATS -->
+
+<rect
+    x="560"
+    y="294"
+    width="220"
+    height="70"
+    rx="17"
+    fill="#101720"
+    stroke="#21262d"
+/>
+
+
+<line
+    x1="633"
+    y1="309"
+    x2="633"
+    y2="349"
+    stroke="#21262d"
+/>
+
+<line
+    x1="707"
+    y1="309"
+    x2="707"
+    y2="349"
+    stroke="#21262d"
+/>
+
+
+<!-- GLOBAL -->
+
+<text
+    x="596"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+GLOBAL
+</text>
+
+<text
+    x="596"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+#{fmt_num(ranking)}
+</text>
+
+
+<!-- SYSTEM -->
+
+<text
+    x="670"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+SYSTEM
+</text>
+
+<text
+    x="670"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+{fmt_num(system_owns)}
+</text>
+
+
+<!-- USER -->
+
+<text
+    x="744"
+    y="316"
+    text-anchor="middle"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+    fill="#6e7681"
+>
+USER
+</text>
+
+<text
+    x="744"
+    y="343"
+    text-anchor="middle"
+    font-size="17"
+    font-weight="800"
+    fill="#f0f6fc"
+>
+{fmt_num(user_owns)}
+</text>
+
+
+<!-- FOOTER -->
+
+<text
+    x="36"
+    y="394"
+    font-size="10"
+    fill="#484f58"
+>
+LIVE HTB PROFILE DATA
+</text>
+
+
+<text
+    x="780"
+    y="394"
+    text-anchor="end"
+    font-size="10"
+    fill="#484f58"
+>
+TW4RDYDEV
+</text>
+
+
+</g>
+
 </svg>
 """
 
-out = Path("assets/htb-card.svg")
-out.parent.mkdir(parents=True, exist_ok=True)
-out.write_text(svg, encoding="utf-8")
-print(f"Updated {out}")
+
+# ── Write ─────────────────────────────────────────────────────────
+
+output = Path("assets/htb-card.svg")
+
+output.parent.mkdir(
+    parents=True,
+    exist_ok=True,
+)
+
+output.write_text(
+    svg,
+    encoding="utf-8",
+)
+
+print(f"Updated {output}")
