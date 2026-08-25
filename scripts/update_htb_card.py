@@ -122,9 +122,9 @@ labs_fill = max(
 svg = f"""
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="{WIDTH}"
-    height="{HEIGHT}"
-    viewBox="0 0 {WIDTH} {HEIGHT}"
+    width="820"
+    height="430"
+    viewBox="0 0 820 430"
     role="img"
     aria-label="Hack The Box profile"
 >
@@ -132,51 +132,19 @@ svg = f"""
 <defs>
 
     <linearGradient id="header" x1="0" x2="1">
-        <stop
-            offset="0%"
-            stop-color="#9fef00"
-            stop-opacity="0.22"
-        />
-
-        <stop
-            offset="48%"
-            stop-color="#9fef00"
-            stop-opacity="0.055"
-        />
-
-        <stop
-            offset="100%"
-            stop-color="#9fef00"
-            stop-opacity="0"
-        />
+        <stop offset="0%" stop-color="#9fef00" stop-opacity="0.22"/>
+        <stop offset="48%" stop-color="#9fef00" stop-opacity="0.055"/>
+        <stop offset="100%" stop-color="#9fef00" stop-opacity="0"/>
     </linearGradient>
 
     <linearGradient id="rankBar" x1="0" x2="1">
-
-        <stop
-            offset="0%"
-            stop-color="#b5ff00"
-        />
-
-        <stop
-            offset="100%"
-            stop-color="#8fe600"
-        />
-
+        <stop offset="0%" stop-color="#b5ff00"/>
+        <stop offset="100%" stop-color="#8fe600"/>
     </linearGradient>
 
     <linearGradient id="labsBar" x1="0" x2="1">
-
-        <stop
-            offset="0%"
-            stop-color="#79b8ff"
-        />
-
-        <stop
-            offset="100%"
-            stop-color="#58a6ff"
-        />
-
+        <stop offset="0%" stop-color="#79b8ff"/>
+        <stop offset="100%" stop-color="#58a6ff"/>
     </linearGradient>
 
     <pattern
@@ -202,7 +170,7 @@ svg = f"""
     x="1"
     y="1"
     width="818"
-    height="408"
+    height="428"
     rx="20"
     fill="#0d1117"
     stroke="#30363d"
@@ -216,7 +184,7 @@ svg = f"""
     x="1"
     y="1"
     width="818"
-    height="100"
+    height="112"
     rx="20"
     fill="url(#header)"
 />
@@ -225,30 +193,20 @@ svg = f"""
     x="1"
     y="1"
     width="818"
-    height="100"
+    height="112"
     rx="20"
     fill="url(#grid)"
 />
 
-<rect
-    x="1"
-    y="82"
-    width="818"
-    height="20"
-    fill="#0d1117"
-/>
+
+<g font-family="Segoe UI, Arial, sans-serif">
 
 
-<g
-    font-family="Segoe UI, Arial, sans-serif"
->
-
-
-<!-- TITLE -->
+<!-- HEADER LEFT -->
 
 <text
     x="36"
-    y="40"
+    y="42"
     font-size="12"
     font-weight="700"
     letter-spacing="2.2"
@@ -259,7 +217,7 @@ HACK THE BOX
 
 <text
     x="36"
-    y="76"
+    y="82"
     font-size="30"
     font-weight="800"
     fill="#f0f6fc"
@@ -268,11 +226,11 @@ HACK THE BOX
 </text>
 
 
-<!-- PROFILE CHIPS -->
+<!-- HEADER RIGHT -->
 
 <rect
     x="626"
-    y="27"
+    y="25"
     width="154"
     height="38"
     rx="11"
@@ -282,7 +240,7 @@ HACK THE BOX
 
 <text
     x="703"
-    y="51"
+    y="49"
     text-anchor="middle"
     font-size="12"
     font-weight="700"
@@ -294,7 +252,7 @@ PUBLIC PROFILE
 
 <rect
     x="626"
-    y="72"
+    y="73"
     width="98"
     height="25"
     rx="8"
@@ -304,7 +262,7 @@ PUBLIC PROFILE
 
 <text
     x="675"
-    y="89"
+    y="90"
     text-anchor="middle"
     font-size="10"
     font-weight="600"
@@ -316,7 +274,7 @@ ID {USER_ID}
 
 <rect
     x="732"
-    y="72"
+    y="73"
     width="48"
     height="25"
     rx="8"
@@ -326,7 +284,7 @@ ID {USER_ID}
 
 <text
     x="756"
-    y="89"
+    y="90"
     text-anchor="middle"
     font-size="10"
     font-weight="700"
@@ -340,7 +298,7 @@ ID {USER_ID}
 
 <text
     x="36"
-    y="134"
+    y="150"
     font-size="12"
     font-weight="700"
     letter-spacing="1.8"
@@ -349,10 +307,9 @@ ID {USER_ID}
 HTB RANK
 </text>
 
-
 <text
     x="36"
-    y="174"
+    y="190"
     font-size="28"
     font-weight="900"
     fill="#9fef00"
@@ -360,10 +317,9 @@ HTB RANK
 {esc(level_title).upper()}
 </text>
 
-
 <text
     x="36"
-    y="199"
+    y="215"
     font-size="11"
     fill="#8b949e"
 >
@@ -371,11 +327,11 @@ Progress to level {int(level) + 1}
 </text>
 
 
-<!-- RANK BAR -->
+<!-- RANK PROGRESS -->
 
 <rect
     x="36"
-    y="213"
+    y="229"
     width="{RANK_BAR_WIDTH}"
     height="10"
     rx="5"
@@ -384,27 +340,25 @@ Progress to level {int(level) + 1}
 
 <rect
     x="36"
-    y="213"
+    y="229"
     width="{rank_fill:.1f}"
     height="10"
     rx="5"
     fill="url(#rankBar)"
 />
 
-
 <text
     x="36"
-    y="245"
+    y="262"
     font-size="11"
     fill="#c9d1d9"
 >
 {fmt_num(level_xp)} / {fmt_num(level_total)} XP
 </text>
 
-
 <text
     x="526"
-    y="245"
+    y="262"
     text-anchor="end"
     font-size="11"
     font-weight="700"
@@ -414,22 +368,21 @@ Progress to level {int(level) + 1}
 </text>
 
 
-<!-- LEVEL CARD -->
+<!-- LEVEL PANEL -->
 
 <rect
     x="560"
-    y="124"
+    y="136"
     width="220"
-    height="130"
+    height="136"
     rx="17"
     fill="#101720"
     stroke="#21262d"
 />
 
-
 <text
     x="582"
-    y="151"
+    y="163"
     font-size="10"
     font-weight="700"
     letter-spacing="1.5"
@@ -438,10 +391,9 @@ Progress to level {int(level) + 1}
 LEVEL
 </text>
 
-
 <text
     x="582"
-    y="194"
+    y="207"
     font-size="44"
     font-weight="900"
     fill="#f0f6fc"
@@ -450,32 +402,34 @@ LEVEL
 </text>
 
 
-<line
-    x1="582"
-    y1="211"
-    x2="758"
-    y2="211"
+<!-- TOTAL XP PILL -->
+
+<rect
+    x="578"
+    y="224"
+    width="184"
+    height="34"
+    rx="9"
+    fill="#0d131b"
     stroke="#21262d"
 />
 
-
 <text
-    x="582"
-    y="235"
-    font-size="10"
+    x="592"
+    y="245"
+    font-size="9"
     font-weight="700"
-    letter-spacing="1.3"
+    letter-spacing="1.2"
     fill="#8b949e"
 >
 TOTAL XP
 </text>
 
-
 <text
-    x="758"
-    y="236"
+    x="748"
+    y="246"
     text-anchor="end"
-    font-size="18"
+    font-size="15"
     font-weight="800"
     fill="#f0f6fc"
 >
@@ -483,22 +437,22 @@ TOTAL XP
 </text>
 
 
-<!-- MAIN DIVIDER -->
+<!-- CLEAN DIVIDER -->
 
 <line
     x1="36"
-    y1="274"
+    y1="292"
     x2="780"
-    y2="274"
+    y2="292"
     stroke="#21262d"
 />
 
 
-<!-- LABS -->
+<!-- LABS RANK -->
 
 <text
     x="36"
-    y="305"
+    y="325"
     font-size="12"
     font-weight="700"
     letter-spacing="1.8"
@@ -507,10 +461,9 @@ TOTAL XP
 LABS RANK
 </text>
 
-
 <text
     x="36"
-    y="342"
+    y="362"
     font-size="23"
     font-weight="800"
     fill="#f0f6fc"
@@ -518,10 +471,9 @@ LABS RANK
 {esc(labs_rank)}
 </text>
 
-
 <text
     x="526"
-    y="342"
+    y="362"
     text-anchor="end"
     font-size="11"
     font-weight="700"
@@ -531,11 +483,11 @@ LABS RANK
 </text>
 
 
-<!-- LABS BAR -->
+<!-- LABS PROGRESS -->
 
 <rect
     x="36"
-    y="355"
+    y="375"
     width="{LABS_BAR_WIDTH}"
     height="9"
     rx="4.5"
@@ -544,7 +496,7 @@ LABS RANK
 
 <rect
     x="36"
-    y="355"
+    y="375"
     width="{labs_fill:.1f}"
     height="9"
     rx="4.5"
@@ -556,28 +508,27 @@ LABS RANK
 
 <rect
     x="560"
-    y="294"
+    y="315"
     width="220"
-    height="70"
+    height="69"
     rx="17"
     fill="#101720"
     stroke="#21262d"
 />
 
-
 <line
     x1="633"
-    y1="309"
+    y1="329"
     x2="633"
-    y2="349"
+    y2="370"
     stroke="#21262d"
 />
 
 <line
     x1="707"
-    y1="309"
+    y1="329"
     x2="707"
-    y2="349"
+    y2="370"
     stroke="#21262d"
 />
 
@@ -586,7 +537,7 @@ LABS RANK
 
 <text
     x="596"
-    y="316"
+    y="338"
     text-anchor="middle"
     font-size="9"
     font-weight="700"
@@ -598,7 +549,7 @@ GLOBAL
 
 <text
     x="596"
-    y="343"
+    y="365"
     text-anchor="middle"
     font-size="17"
     font-weight="800"
@@ -612,7 +563,7 @@ GLOBAL
 
 <text
     x="670"
-    y="316"
+    y="338"
     text-anchor="middle"
     font-size="9"
     font-weight="700"
@@ -624,7 +575,7 @@ SYSTEM
 
 <text
     x="670"
-    y="343"
+    y="365"
     text-anchor="middle"
     font-size="17"
     font-weight="800"
@@ -638,7 +589,7 @@ SYSTEM
 
 <text
     x="744"
-    y="316"
+    y="338"
     text-anchor="middle"
     font-size="9"
     font-weight="700"
@@ -650,7 +601,7 @@ USER
 
 <text
     x="744"
-    y="343"
+    y="365"
     text-anchor="middle"
     font-size="17"
     font-weight="800"
@@ -664,17 +615,16 @@ USER
 
 <text
     x="36"
-    y="394"
+    y="414"
     font-size="10"
     fill="#484f58"
 >
 LIVE HTB PROFILE DATA
 </text>
 
-
 <text
     x="780"
-    y="394"
+    y="414"
     text-anchor="end"
     font-size="10"
     fill="#484f58"
@@ -684,10 +634,8 @@ TW4RDYDEV
 
 
 </g>
-
 </svg>
 """
-
 
 # ── Write ─────────────────────────────────────────────────────────
 
