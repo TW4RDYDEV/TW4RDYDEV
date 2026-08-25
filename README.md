@@ -70,41 +70,43 @@ Python desktop application for discovering active devices on local networks.
 
 <div align="center">
 
-<strong>Development</strong>
+### Development
 
-<br><br>
-
-<img src="https://skillicons.dev/icons?i=python,lua,js,html,css,react,nextjs,nodejs,npm&theme=dark" />
+<img src="https://go-skill-icons.vercel.app/api/icons?i=python,lua,javascript,html,css,react,nextjs,nodejs,npm&theme=dark" />
 
 <br><br><br>
 
-<strong>Security & Networking</strong>
+### Security & networking
+
+<p align="center">
+  <img src="https://nmap.org/images/sitelogo-nmap.svg" height="48" title="Nmap" alt="Nmap" />
+  &nbsp;&nbsp;
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=wireshark&theme=dark" height="48" title="Wireshark" alt="Wireshark" />
+  &nbsp;&nbsp;
+  <img src="./assets/icons/hashcat.svg" height="48" width="48" title="Hashcat" alt="Hashcat" />
+  &nbsp;&nbsp;
+  <img src="./assets/icons/john.svg" height="48" width="48" title="John the Ripper" alt="John the Ripper" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/vanhauser-thc/thc-hydra/master/xhydra.png" height="48" width="48" title="Hydra" alt="Hydra" />
+  &nbsp;&nbsp;
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=hackthebox&theme=dark" height="48" title="Hack The Box" alt="Hack The Box" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.simpleicons.org/cisco/1BA0D7" height="48" width="48" title="Cisco Packet Tracer" alt="Packet Tracer" />
+  &nbsp;&nbsp;
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=burpsuite&theme=dark" height="48" title="Burp Suite" alt="Burp Suite" />
+  &nbsp;&nbsp;
+  <img src="./assets/icons/sqlmap.svg" height="48" width="48" title="sqlmap" alt="sqlmap" />
+</p>
 
 <br><br>
 
-<img src="https://img.shields.io/badge/Nmap-0D1117?style=for-the-badge&logo=nmap&logoColor=white" />
-<img src="https://img.shields.io/badge/Wireshark-0D1117?style=for-the-badge&logo=wireshark&logoColor=1679A7" />
-<img src="https://img.shields.io/badge/Hack_The_Box-0D1117?style=for-the-badge&logo=hackthebox&logoColor=9FEF00" />
-<img src="https://img.shields.io/badge/Cisco-0D1117?style=for-the-badge&logo=cisco&logoColor=1BA0D7" />
-<img src="https://img.shields.io/badge/Packet_Tracer-0D1117?style=for-the-badge&logo=cisco&logoColor=white" />
-<img src="https://img.shields.io/badge/TCP%2FIP-0D1117?style=for-the-badge&logoColor=white" />
+### Systems & Virtualization
+
+<img src="https://go-skill-icons.vercel.app/api/icons?i=kali,linux,ubuntu,windows,vmwareworkstation&theme=dark" />
 
 <br><br><br>
 
-<strong>Systems & Virtualization</strong>
-
-<br><br>
-
-<img src="https://img.shields.io/badge/Fedora-0D1117?style=for-the-badge&logo=fedora&logoColor=51A2DA" />
-<img src="https://img.shields.io/badge/Ubuntu-0D1117?style=for-the-badge&logo=ubuntu&logoColor=E95420" />
-<img src="https://img.shields.io/badge/Windows-0D1117?style=for-the-badge&logo=windows11&logoColor=0078D4" />
-<img src="https://img.shields.io/badge/VMware-0D1117?style=for-the-badge&logo=vmware&logoColor=white" />
-
-<br><br><br>
-
-<strong>Frameworks & Interfaces</strong>
-
-<br><br>
+### Frameworks & Interfaces
 
 <img src="https://img.shields.io/badge/Qt_%2F_QML-0D1117?style=for-the-badge&logo=qt&logoColor=41CD52" />
 <img src="https://img.shields.io/badge/PySide6-0D1117?style=for-the-badge&logo=python&logoColor=3776AB" />
@@ -112,15 +114,9 @@ Python desktop application for discovering active devices on local networks.
 
 <br><br><br>
 
-<strong>Tools & Workflow</strong>
+### Tools & Workflow
 
-<br><br>
-
-<img src="https://skillicons.dev/icons?i=git,github,vscode,bash,powershell,markdown&theme=dark" />
-
-<br><br>
-
-<img src="https://img.shields.io/badge/GitHub_Actions-0D1117?style=for-the-badge&logo=githubactions&logoColor=2088FF" />
+<img src="https://go-skill-icons.vercel.app/api/icons?i=git,github,vscode,bash,powershell,markdown,githubactions&theme=dark" />
 
 </div>
 
