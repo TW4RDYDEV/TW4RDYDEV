@@ -48,26 +48,21 @@ Hands-on labs in enumeration, exploitation, privilege escalation, Linux, and net
 
 ---
 
-## 🎧 selected track
+## 🎧 track
 
-<table>
-<tr>
-<td width="110">
+<br>
 
 <a href="https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM">
-  <img src="./assets/track.jpg" width="90" alt="Apollo">
+  <img src="https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f765a159af00f00b0f2d513d" width="80" align="left" alt="Apollo">
 </a>
 
-</td>
-<td>
+&nbsp;&nbsp;&nbsp; <b>APOLLO</b><br>
+&nbsp;&nbsp;&nbsp; Avi · Louis Villain · Sarius<br><br>
+&nbsp;&nbsp;&nbsp; <a href="https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM">Listen on Spotify ↗</a>
 
-### [Apollo](https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM)
+<br clear="left">
+<br>
 
-[Avi, Louis Villain, Sarius](https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM)
-
-</td>
-</tr>
-</table>
 
 ---
 
