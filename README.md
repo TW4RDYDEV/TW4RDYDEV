@@ -1,4 +1,3 @@
-```md
 <div align="center">
 
 # TWARDY.exe
@@ -91,4 +90,3 @@ If you're building something and think I could contribute, need help with a proj
 <sub>building quietly.</sub>
 
 </div>
-```
