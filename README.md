@@ -54,14 +54,16 @@ Hands-on labs in enumeration, exploitation, privilege escalation, Linux, and net
 <tr>
 <td width="110">
 
-<img src="./assets/track.jpg" width="90">
+<a href="https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM">
+  <img src="./assets/track.jpg" width="90" alt="Apollo">
+</a>
 
 </td>
 <td>
 
-### Apollo
+### [Apollo](https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM)
 
-**Avi, Louis Villain, Sarius**
+[Avi, Louis Villain, Sarius](https://open.spotify.com/track/2S13g8BhBuFzkGpwDw1ONM)
 
 </td>
 </tr>
