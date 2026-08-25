@@ -95,7 +95,7 @@ Python desktop application for discovering active devices on local networks.
   &nbsp;&nbsp;
   <img src="https://go-skill-icons.vercel.app/api/icons?i=burpsuite&theme=dark" height="48" title="Burp Suite" alt="Burp Suite" />
   &nbsp;&nbsp;
-  <img src="./assets/icons/sqlmap.png" height="48" width="48" title="sqlmap" alt="sqlmap" />
+  <img src="./assets/icons/Sqlmap.png" height="48" width="48" title="sqlmap" alt="sqlmap" />
 </p>
 
 <br><br>
