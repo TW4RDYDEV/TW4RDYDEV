@@ -35,6 +35,9 @@ Currently working on security tools, network utilities, labs, and infrastructure
 ### [TwardyPass](https://github.com/TW4RDYDEV/TwardyPass)
 Privacy-first password security workbench with local strength analysis, breach intelligence, secure generation, and a modern PySide6/QML interface.
 
+### [number-system-converter](https://github.com/TW4RDYDEV/number-system-converter)
+Desktop number system converter for binary, octal, decimal, and hexadecimal values with automatic detection, bit-level inspection, and a PySide6/QML interface.
+
 ### [network-scanner](https://github.com/TW4RDYDEV/network-scanner)
 Python desktop application for discovering active devices on local networks.
 
