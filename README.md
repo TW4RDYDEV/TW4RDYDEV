@@ -38,6 +38,9 @@ Currently working on security tools, network utilities, labs, and infrastructure
 
 ## 🧪 Selected work
 
+### [NEXUS](https://github.com/TW4RDYDEV/NEXUS)
+Local-first offensive security engagement platform for mapping assets, credentials, sessions, pivots, findings, evidence, and attack paths.
+
 ### [TwardyPass](https://github.com/TW4RDYDEV/TwardyPass)
 Privacy-first password security workbench with local strength analysis, breach intelligence, secure generation, and a modern PySide6/QML interface.
 
