@@ -128,7 +128,16 @@ Python desktop application for discovering active devices on local networks.
 
 ### Tools & Workflow
 
-<img src="https://go-skill-icons.vercel.app/api/icons?i=git,github,vscode,bash,powershell,markdown,githubactions&theme=dark" />
+<img src="https://go-skill-icons.vercel.app/api/icons?i=git,github,vscode,bash,powershell,markdown,githubactions&theme=dark" />|
+<!--Check out my CoreIcons library (https://mauriciospark.github.io/coreIcons/)-->
+<img src="https://mauriciospark.github.io/coreIcons/fotos/githubactions.png" height="45" alt="githubactions logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/markdown.png" height="45" alt="Markdown logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/json.png" height="45" alt="Json logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/powershell.png" height="45" alt="powershell logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/bash.png" height="45" alt="bash logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/visualstudiocode.png" height="45" alt="vscode logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/git.png" height="45" alt="git logo"/>
+<img src="https://mauriciospark.github.io/coreIcons/fotos/github.png" height="45" alt="github logo"/>
 
 </div>
 
