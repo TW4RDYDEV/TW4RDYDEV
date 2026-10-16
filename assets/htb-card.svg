@@ -169,7 +169,7 @@ ID 3331404
     font-weight="700"
     fill="#8b949e"
 >
-CA
+PL
 </text>
 
 
@@ -202,7 +202,7 @@ PROFESSIONAL
     font-size="11"
     fill="#8b949e"
 >
-Progress to level 49
+Progress to level 50
 </text>
 
 
@@ -220,7 +220,7 @@ Progress to level 49
 <rect
     x="36"
     y="229"
-    width="45.5"
+    width="341.6"
     height="10"
     rx="5"
     fill="url(#rankBar)"
@@ -232,7 +232,7 @@ Progress to level 49
     font-size="11"
     fill="#c9d1d9"
 >
-115 / 1,239 XP
+891 / 1,278 XP
 </text>
 
 <text
@@ -243,7 +243,7 @@ Progress to level 49
     font-weight="700"
     fill="#8b949e"
 >
-9.3%
+69.7%
 </text>
 
 
@@ -277,7 +277,7 @@ LEVEL
     font-weight="900"
     fill="#f0f6fc"
 >
-48
+49
 </text>
 
 
@@ -312,7 +312,7 @@ TOTAL XP
     font-weight="800"
     fill="#f0f6fc"
 >
-28,800
+30,815
 </text>
 
 
@@ -347,7 +347,7 @@ LABS RANK
     font-weight="800"
     fill="#f0f6fc"
 >
-Script Kiddie
+Hacker
 </text>
 
 <text
@@ -358,7 +358,7 @@ Script Kiddie
     font-weight="700"
     fill="#8b949e"
 >
-67.1% TO HACKER
+16.4% TO PRO HACKER
 </text>
 
 
@@ -376,7 +376,7 @@ Script Kiddie
 <rect
     x="36"
     y="375"
-    width="328.6"
+    width="80.4"
     height="9"
     rx="4.5"
     fill="url(#labsBar)"
@@ -460,7 +460,7 @@ SYSTEM
     font-weight="800"
     fill="#f0f6fc"
 >
-41
+44
 </text>
 
 
@@ -486,7 +486,7 @@ USER
     font-weight="800"
     fill="#f0f6fc"
 >
-41
+44
 </text>
 
 
