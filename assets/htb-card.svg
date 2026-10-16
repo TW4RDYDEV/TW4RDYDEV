@@ -202,7 +202,7 @@ PROFESSIONAL
     font-size="11"
     fill="#8b949e"
 >
-Progress to level 47
+Progress to level 49
 </text>
 
 
@@ -220,7 +220,7 @@ Progress to level 47
 <rect
     x="36"
     y="229"
-    width="441.5"
+    width="45.5"
     height="10"
     rx="5"
     fill="url(#rankBar)"
@@ -232,7 +232,7 @@ Progress to level 47
     font-size="11"
     fill="#c9d1d9"
 >
-1,048 / 1,163 XP
+115 / 1,239 XP
 </text>
 
 <text
@@ -243,7 +243,7 @@ Progress to level 47
     font-weight="700"
     fill="#8b949e"
 >
-90.1%
+9.3%
 </text>
 
 
@@ -277,7 +277,7 @@ LEVEL
     font-weight="900"
     fill="#f0f6fc"
 >
-46
+48
 </text>
 
 
@@ -312,7 +312,7 @@ TOTAL XP
     font-weight="800"
     fill="#f0f6fc"
 >
-27,370
+28,800
 </text>
 
 
@@ -358,7 +358,7 @@ Script Kiddie
     font-weight="700"
     fill="#8b949e"
 >
-26.9% TO HACKER
+67.1% TO HACKER
 </text>
 
 
@@ -376,7 +376,7 @@ Script Kiddie
 <rect
     x="36"
     y="375"
-    width="132.0"
+    width="328.6"
     height="9"
     rx="4.5"
     fill="url(#labsBar)"
@@ -434,7 +434,7 @@ GLOBAL
     font-weight="800"
     fill="#f0f6fc"
 >
-#992
+#1,004
 </text>
 
 
@@ -460,7 +460,7 @@ SYSTEM
     font-weight="800"
     fill="#f0f6fc"
 >
-39
+41
 </text>
 
 
@@ -486,7 +486,7 @@ USER
     font-weight="800"
     fill="#f0f6fc"
 >
-39
+41
 </text>
 
 
